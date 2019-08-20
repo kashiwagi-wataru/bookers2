@@ -1,8 +1,6 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
-	#ビフォーアクションはこのコントローラーが実行される前という意味
-	#authenticate userはdeviseで用意されているメソッドで、ログイン認証がされていないとrootパスにリダイレクトされる。
-	#アプリケーションコントローラーに記述すれば全適用されるが、今回はhomeコントローラーは適用したくないので、booksとusersに適用
+
 
   def show
 	  @book = Book.find(params[:id])
@@ -10,8 +8,8 @@ class BooksController < ApplicationController
   end
 
   def index
-  	@book = Book.new #new bookの新規投稿で必要、ブックモデルに新しいデータを渡すのでnew
-  	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
+  	@book = Book.new 
+  	@books = Book.all 
   end
 
   def create
