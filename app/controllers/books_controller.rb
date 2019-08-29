@@ -9,13 +9,14 @@ class BooksController < ApplicationController
 
   def index
   	@book = Book.new 
-  	@books = Book.all 
+	@books = Book.all
+	@book.tags.build  
   end
 
   def create
-  	@book = Book.new(book_params) #Bookモデルのテーブルを使用しているのでbookコントローラで保存する。
-  	@book.user_id = current_user.id #カレント（ログインしてる人）idをbook user id変数として格納する。
-  	if @book.save #入力されたデータをdbに保存する。
+  	@book = Book.new(book_params) 
+  	@book.user_id = current_user.id 
+  	if @book.save 
   		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
   	else
   		@books = Book.all
@@ -48,7 +49,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-  	params.require(:book).permit(:title, :body)
+  	params.require(:book).permit(:title, :body, tags_atrributes: [:tag_id, :genre])
   end
 
 end

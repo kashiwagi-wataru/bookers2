@@ -9,6 +9,18 @@
 		<%= f.text_area :body, class: "col-xs-12 book_body" %>
 	</div>
 
+
+	<div class="field row">
+	<label>
+		<%= f.label :タグ付け %>
+
+
+		<%= f.radio_button :title, "genre" %>
+
+	</label>
+	</div>
+
+
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" ,data: {disable_with: "送信中..." } %>
 	</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_090222) do
+ActiveRecord::Schema.define(version: 2019_08_23_024819) do
 
   create_table "book_categories", force: :cascade do |t|
     t.integer "book_id"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2019_08_19_090222) do
     t.index ["book_id", "category_id"], name: "index_book_categories_on_book_id_and_category_id", unique: true
     t.index ["book_id"], name: "index_book_categories_on_book_id"
     t.index ["category_id"], name: "index_book_categories_on_category_id"
+  end
+
+  create_table "book_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "books", force: :cascade do |t|
@@ -60,6 +65,13 @@ ActiveRecord::Schema.define(version: 2019_08_19_090222) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "genre"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

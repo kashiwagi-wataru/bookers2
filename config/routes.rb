@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  resources :tags
   resources :relationships, only: [:create, :destroy]
   root 'home#top'
   get 'home/about'
