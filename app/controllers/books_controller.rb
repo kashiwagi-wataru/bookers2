@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
 
-
   def show
 	  @book = Book.find(params[:id])
 	  @comment =Comment.new
@@ -15,9 +14,9 @@ class BooksController < ApplicationController
 
   def create
   	@book = Book.new(book_params) 
-  	@book.user_id = current_user.id 
-  	if @book.save 
-  		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
+	  @book.user_id = current_user.id
+  	if @book.save
+  		redirect_to @book, notice: "successfully created book!"
   	else
   		@books = Book.all
   		render 'index'
@@ -26,9 +25,6 @@ class BooksController < ApplicationController
 
   def edit
   	@book = Book.find(params[:id])
-  	if @book.user.id != current_user.id
-  		redirect_to books_path
-  	end
   end
 
   def update

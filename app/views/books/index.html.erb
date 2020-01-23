@@ -1,6 +1,6 @@
 <!-- newbook入力でエラー発生時はbook indexにリダイレクトして、最初にエラー判定させてる-->
 <% if @book.errors.any? %>
-	<h3><%= @book.errors.count %>error occurrence</h3><!--エラーメッセ-->
+	<h3><%= @book.errors.count %>error occurrence</h3>
 	<ul>
 		<% @book.errors.full_messages.each do |message| %>
 		<li><%= message %></li>
@@ -14,7 +14,6 @@
 
 		<h2>User info</h2>
 		<%= render 'users/profile', user: current_user %>
-		<!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
 
 		<h2>New book</h2>
 		<%= render 'books/newform', book: @book %>
